@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApiOrders.Application.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WebApiOrders.WebApi.Controllers
 {
     [ApiController]
@@ -39,7 +37,7 @@ namespace WebApiOrders.WebApi.Controllers
         public virtual async Task<IActionResult> Post([FromBody] T entity)
         {
             await _repository.CreateAsync(entity);
-            return CreatedAtAction(nameof(T), entity);
+            return Ok();
         }
 
         [HttpPut("{id}")]
