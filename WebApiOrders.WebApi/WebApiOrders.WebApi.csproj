@@ -16,8 +16,4 @@
     <ProjectReference Include="..\WebApiOrders.Persistance\WebApiOrders.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

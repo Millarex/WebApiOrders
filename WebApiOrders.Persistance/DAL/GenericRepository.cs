@@ -1,13 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using WebApiOrders.Application.Interfaces;
 
-namespace WebApiOrders.Application.DAL
+namespace WebApiOrders.Infrastructure.DAL
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {

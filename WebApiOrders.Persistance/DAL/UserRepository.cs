@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using WebApiOrders.Application.Interfaces;
 using WebApiOrders.Domain.Data;
 
-namespace WebApiOrders.Application.DAL
+namespace WebApiOrders.Persistance.DAL
 {
     public class UserRepository : IGenericRepository<UserModel>
     {
-        private readonly DbContext _dbContext;
-        public UserRepository(DbContext context)
+        private readonly WebApiOrdersDBContext _dbContext;
+        public UserRepository(WebApiOrdersDBContext context)
         {
             _dbContext = context;
         }
@@ -38,7 +39,7 @@ namespace WebApiOrders.Application.DAL
 
         public async Task UpdateAsync(UserModel entity)
         {
-            _dbContext.Update(entity);
+            _dbContext.Set<UserModel>().Update(entity);
             await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteAsync(int id)

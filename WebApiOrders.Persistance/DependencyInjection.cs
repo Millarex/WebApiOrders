@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApiOrders.Application.Interfaces;
+using WebApiOrders.Domain.Data;
+using WebApiOrders.Persistance.DAL;
 
 namespace WebApiOrders.Persistance
 {
@@ -17,6 +19,9 @@ namespace WebApiOrders.Persistance
 
             services.AddScoped<IWebApiOrdersDbContext>(provider =>
                provider.GetService<WebApiOrdersDBContext>());
+
+            services.AddScoped<IGenericRepository<UserModel>, UserRepository>();
+            services.AddScoped<IGenericRepository<OrderModel>, OrderRepository>();
             return services;
         }
     }
