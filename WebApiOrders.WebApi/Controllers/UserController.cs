@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiOrders.Application.Interfaces;
 using WebApiOrders.Domain.Data;
+using WebApiOrders.WebApi.Models;
 
 namespace WebApiOrders.WebApi.Controllers
 {
     [Route("api/entity/[controller]")]
-    public class UserController : GenericBaseController<UserModel>
+    public class UserController : GenericBaseController<UserModel, UserDto>
     {
-        public UserController(IGenericRepository<UserModel> repository) : base(repository)
+        public UserController(IGenericRepository<UserModel> repository, IMapper mapper) : base(repository, mapper)
         {
         }
     }

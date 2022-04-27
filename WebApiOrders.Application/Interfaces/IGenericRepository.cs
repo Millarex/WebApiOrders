@@ -9,8 +9,8 @@ namespace WebApiOrders.Application.Interfaces
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
-        Task CreateAsync(TEntity entity);
-        Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(int id);
+        Task<bool> CreateAsync(TEntity entity);
+        Task<bool> UpdateAsync(int id, TEntity entity);
+        Task<bool> DeleteAsync(int id);
     }
 }
