@@ -20,8 +20,8 @@ namespace WebApiOrders.Persistance
             services.AddScoped<IWebApiOrdersDbContext>(provider =>
                provider.GetService<WebApiOrdersDBContext>());
 
-            services.AddScoped<IGenericRepository<UserModel>, UserRepository>();
-            services.AddScoped<IGenericRepository<OrderModel>, OrderRepository>();
+            services.AddScoped<IAsyncGenericRepository<UserModel>, UserRepository>();
+            services.AddScoped<IAsyncGenericRepository<OrderModel>, OrderRepository>();
             return services;
         }
     }

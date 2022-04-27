@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace WebApiOrders.Application.Interfaces
 {
-    public interface IGenericRepository<TEntity> : IDisposable
+    public interface IAsyncGenericRepository<TEntity> : IDisposable
         where TEntity : class
     {
         Task<IEnumerable<TEntity>> GetAllAsync();

@@ -10,7 +10,8 @@ namespace WebApiOrders.WebApi.Controllers
     [Route("api/entity/[controller]")]
     public class UserController : GenericBaseController<UserModel, UserDto>
     {
-        public UserController(IGenericRepository<UserModel> repository, IMapper mapper) : base(repository, mapper)
+        public UserController(IAsyncGenericRepository<UserModel> repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
     }

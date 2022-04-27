@@ -11,7 +11,8 @@ namespace WebApiOrders.WebApi.Controllers
     [Route("api/entity/[controller]")]
     public class OrderController : GenericBaseController<OrderModel, OrderDto>
     {
-        public OrderController(IGenericRepository<OrderModel> repository, IMapper mapper) : base(repository, mapper)
+        public OrderController(IAsyncGenericRepository<OrderModel> repository, IMapper mapper)
+            : base(repository, mapper)
         {
         }
     }

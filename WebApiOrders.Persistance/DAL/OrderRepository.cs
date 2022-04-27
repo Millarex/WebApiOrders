@@ -7,7 +7,7 @@ using WebApiOrders.Domain.Data;
 
 namespace WebApiOrders.Persistance.DAL
 {
-    public class OrderRepository : IGenericRepository<OrderModel>
+    public class OrderRepository : IAsyncGenericRepository<OrderModel>
     {
         private readonly WebApiOrdersDBContext _dbContext;
 
@@ -28,7 +28,8 @@ namespace WebApiOrders.Persistance.DAL
 
         public async Task<bool> CreateAsync(OrderModel entity)
         {
-            //Manual validation TODO: Auto validation for Create method type of OrderModel
+            //Manual validation
+            //TODO: Auto validation for Create method type of OrderModel
             if (entity == null || entity.Name == null || entity.Description == null)
                 return false;
             var user = await _dbContext.Set<UserModel>().FindAsync(entity.UserId);
@@ -66,6 +67,7 @@ namespace WebApiOrders.Persistance.DAL
                     order.User = user;
                 }
             }
+            //
 
             _dbContext.Set<OrderModel>().Update(order);
             await _dbContext.SaveChangesAsync();

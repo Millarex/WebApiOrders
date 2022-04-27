@@ -11,10 +11,10 @@ namespace WebApiOrders.WebApi.Controllers
         where Tentity : class
         where Tdto : IDto
     {
-        protected IGenericRepository<Tentity> _repository;
+        protected IAsyncGenericRepository<Tentity> _repository;
         protected readonly IMapper _mapper;
 
-        public GenericBaseController(IGenericRepository<Tentity> repository, IMapper mapper)
+        public GenericBaseController(IAsyncGenericRepository<Tentity> repository, IMapper mapper)
         {
             _mapper = mapper;
             _repository = repository;
@@ -23,7 +23,8 @@ namespace WebApiOrders.WebApi.Controllers
         [HttpGet]
         public virtual async Task<IActionResult> GetAllAsync()
         {
-            //TODO: Add Mapping for query data
+            //TODO: Add Mapping for List query data
+
             var result = await _repository.GetAllAsync();
             return Ok(result);
         }
@@ -44,6 +45,7 @@ namespace WebApiOrders.WebApi.Controllers
         public virtual async Task<IActionResult> Post([FromBody] Tdto entryEntity)
         {
             var entity = _mapper.Map<Tentity>(entryEntity);
+
             var result = await _repository.CreateAsync(entity);
             if (result)
                 return Ok();
@@ -54,6 +56,7 @@ namespace WebApiOrders.WebApi.Controllers
         public virtual async Task<IActionResult> Update(int id, [FromBody] Tdto entryEntity)
         {
             var entity = _mapper.Map<Tentity>(entryEntity);
+
             var result = await _repository.UpdateAsync(id, entity);
             if (!result)
                 return BadRequest();

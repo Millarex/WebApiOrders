@@ -25,7 +25,9 @@ namespace WebApiOrders.WebApi
 
             services.AddControllers()
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
             services.AddPersistence(Configuration);
+
             services.AddAutoMapper(config =>
             {
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
@@ -45,6 +47,7 @@ namespace WebApiOrders.WebApi
 
             app.UseRouting();
 
+            //Add if needed
             //app.UseAuthentication();
             //app.UseAuthorization();          
 
