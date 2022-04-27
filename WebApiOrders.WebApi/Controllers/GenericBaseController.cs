@@ -47,7 +47,7 @@ namespace WebApiOrders.WebApi.Controllers
             var result = await _repository.CreateAsync(entity);
             if (result)
                 return Ok();
-            return BadRequest(result);
+            return BadRequest();
         }
 
         [HttpPut("{id}")]
@@ -56,7 +56,7 @@ namespace WebApiOrders.WebApi.Controllers
             var entity = _mapper.Map<Tentity>(entryEntity);
             var result = await _repository.UpdateAsync(id, entity);
             if (!result)
-                return NotFound();
+                return BadRequest();
             return NoContent();
         }
 

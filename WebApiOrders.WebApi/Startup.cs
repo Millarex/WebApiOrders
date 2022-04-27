@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System.Reflection;
 using WebApiOrders.Application.Common.Mapping;
 using WebApiOrders.Application.Interfaces;
@@ -22,7 +23,8 @@ namespace WebApiOrders.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddPersistence(Configuration);
             services.AddAutoMapper(config =>
             {
