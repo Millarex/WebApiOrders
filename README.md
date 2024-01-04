@@ -1,5 +1,5 @@
 # WebApiOrders
-Test WebApiApp asp.net 5. Generyc CRUD
+Test WebApiApp asp.net 5. Generic CRUD
 
 Stack:
 -PostgreSql
